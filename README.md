@@ -6,6 +6,68 @@ Proyek ini dibangun berdasarkan dokumen proposal DiPStrategy, panduan desain ant
 
 ---
 
+## Struktur Direktori Proyek
+
+```text
+backend-ohdmuseum/
+├── src/                          # KODE SUMBER BACKEND UTAMA
+│   ├── app/
+│   │   ├── api/v1/               # 28 Route Handlers (14 Modul CMS)
+│   │   │   ├── auth/             # Autentikasi staf & JWT
+│   │   │   ├── users/            # Manajemen akun CMS
+│   │   │   ├── roles/            # Hak akses & 51 permissions (RBAC)
+│   │   │   ├── audit-logs/       # Buku jejak audit (append-only)
+│   │   │   ├── dashboard/        # Ringkasan metrik statistik CMS
+│   │   │   ├── categories/       # Taksonomi era, medium, topik
+│   │   │   ├── artists/          # Profil maestro seni rupa
+│   │   │   ├── artworks/         # 2.000+ karya seni koleksi museum
+│   │   │   ├── exhibitions/      # Kalender & agenda pameran
+│   │   │   ├── articles/         # Wawasan kuratorial & berita
+│   │   │   ├── books/            # Publikasi buku katalog museum
+│   │   │   ├── banners/          # Hero slider beranda (desktop & mobile)
+│   │   │   ├── menus/            # Navigasi bertingkat (Header, Mega Menu)
+│   │   │   ├── pages/            # Halaman statis (About, Dr OHD, Visit)
+│   │   │   ├── documents/        # Media library PDF & berkas pers
+│   │   │   ├── reservations/     # Tiket & booking kunjungan
+│   │   │   ├── contact/          # Form kontak & pesan masuk
+│   │   │   ├── settings/         # Konfigurasi global museum
+│   │   │   ├── search/           # Pencarian cepat Trigram PostgreSQL
+│   │   │   └── health/           # Pemeriksaan status server & live DB
+│   │   ├── layout.tsx            # Root layout Next.js
+│   │   └── page.tsx              # Portal interaktif dokumentasi API
+│   ├── lib/                      # Utilitas Inti Backend
+│   │   ├── db.ts                 # PostgreSQL connection pool (Render.com SSL)
+│   │   ├── auth.ts               # Hashing Bcrypt & penandatangan JWT
+│   │   ├── rbac.ts               # Middleware penjaga izin hak akses
+│   │   └── audit.ts              # Pencatat jejak riwayat audit otomatis
+│   ├── types/                    # Definisi tipe data TypeScript
+│   └── utils/                    # Standar respons JSON & pagination
+├── database/                     # Berkas Skema & Seed PostgreSQL
+│   ├── schema.sql                # Definisi 20 tabel (3NF), ekstensi, & trigger
+│   ├── seed.sql                  # Data inisial role, permission, & admin
+│   ├── full_database.sql         # Skrip gabungan siap impor ke DBMS
+│   ├── verify.js                 # Penguji integritas Foreign Key
+│   └── README.md                 # Panduan eksekusi SQL
+├── docs/                         # Dokumentasi Arsitektur
+│   └── ERD-OHD-Normalize.png     # Diagram Entity Relationship (3NF)
+├── scripts/                      # Skrip Otomasi Pengujian & Peluncuran
+│   ├── dev.js                    # Peluncur server pengembangan
+│   ├── build.js                  # Pembangun kompilasi produksi
+│   ├── start.js                  # Peluncur server produksi
+│   ├── test-api.js               # Penguji otomatis integrasi live DB
+│   ├── migrate.js                # Migrator skema ke Render PostgreSQL
+│   └── verify-render.js          # Verifikator koneksi Render.com
+├── tools/                        # Utilitas Pendukung
+│   └── adminer.php               # Adminer standalone database viewer
+├── .env.example                  # Template variabel lingkungan
+├── next.config.js                # Konfigurasi Next.js
+├── package.json                  # Dependensi proyek
+├── README.md                     # Dokumentasi panduan proyek
+└── tsconfig.json                 # Konfigurasi TypeScript
+```
+
+---
+
 ## Arsitektur Sistem
 
 ```text
