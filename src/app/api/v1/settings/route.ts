@@ -9,6 +9,7 @@ interface SettingRow {
   id: string;
   key: string;
   value: any;
+  group_name: string;
   group: string;
   description: string | null;
   updated_at: string;
@@ -17,17 +18,17 @@ interface SettingRow {
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const group = searchParams.get('group');
+    const group = searchParams.get('group') || searchParams.get('group_name');
 
-    let sql = 'SELECT id, key, value, "group", description, updated_at FROM system_settings';
+    let sql = 'SELECT id, key, value, group_name, group_name AS "group", description, updated_at FROM system_settings';
     const params: any[] = [];
 
     if (group) {
       params.push(group);
-      sql += ` WHERE "group" = $${params.length}`;
+      sql += ` WHERE group_name = $${params.length}`;
     }
 
-    sql += ' ORDER BY "group" ASC, key ASC';
+    sql += ' ORDER BY group_name ASC, key ASC';
 
     const result = await query<SettingRow>(sql, params);
 
@@ -77,7 +78,7 @@ export async function PUT(request: Request) {
         value = $1,
         updated_at = NOW()
        WHERE key = $2
-       RETURNING *`,
+       RETURNING id, key, value, group_name, group_name AS "group", description, updated_at`,
       [typeof value === 'object' ? JSON.stringify(value) : value, key]
     );
 
