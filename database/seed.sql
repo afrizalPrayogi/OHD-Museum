@@ -243,15 +243,15 @@ ON CONFLICT (key) DO NOTHING;
 -- 7. DEFAULT MENUS (Navigation)
 -- -----------------------------------------------------------------------------
 INSERT INTO menus (id, location_code, name, is_active) VALUES
-    ('m0000001-0000-0000-0000-000000000001', 'header_main', 'Main Header Navbar', TRUE),
-    ('m0000002-0000-0000-0000-000000000002', 'mega_publication', 'Mega Menu Publication', TRUE),
-    ('m0000003-0000-0000-0000-000000000003', 'footer_links', 'Footer Navigation Links', TRUE)
+    ('d0000001-0000-0000-0000-000000000001', 'header_main', 'Main Header Navbar', TRUE),
+    ('d0000002-0000-0000-0000-000000000002', 'mega_publication', 'Mega Menu Publication', TRUE),
+    ('d0000003-0000-0000-0000-000000000003', 'footer_links', 'Footer Navigation Links', TRUE)
 ON CONFLICT (location_code) DO NOTHING;
 
 -- Header Main Items
 INSERT INTO menu_items (menu_id, parent_id, label, url, sort_order, is_active) VALUES
-    ('m0000001-0000-0000-0000-000000000001', NULL, 'About', '/about', 1, TRUE),
-    ('m0000001-0000-0000-0000-000000000001', NULL, 'Collection', '/collection', 2, TRUE),
-    ('m0000001-0000-0000-0000-000000000001', NULL, 'Exhibition', '/exhibition', 3, TRUE),
-    ('m0000001-0000-0000-0000-000000000001', NULL, 'Publication', '/publication', 4, TRUE),
-    ('m0000001-0000-0000-0000-000000000001', NULL, 'Visit', '/visit', 5, TRUE);
+    ('d0000001-0000-0000-0000-000000000001', NULL, 'About', '/about', 1, TRUE),
+    ('d0000001-0000-0000-0000-000000000001', NULL, 'Collection', '/collection', 2, TRUE),
+    ('d0000001-0000-0000-0000-000000000001', NULL, 'Exhibition', '/exhibition', 3, TRUE),
+    ('d0000001-0000-0000-0000-000000000001', NULL, 'Publication', '/publication', 4, TRUE),
+    ('d0000001-0000-0000-0000-000000000001', NULL, 'Visit', '/visit', 5, TRUE);

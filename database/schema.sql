@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS users (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+DROP TRIGGER IF EXISTS trg_users_updated_at ON users;
 CREATE TRIGGER trg_users_updated_at
 BEFORE UPDATE ON users
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -117,6 +118,7 @@ CREATE TABLE IF NOT EXISTS artists (
     CONSTRAINT chk_artist_locale CHECK (locale IN ('id', 'en'))
 );
 
+DROP TRIGGER IF EXISTS trg_artists_updated_at ON artists;
 CREATE TRIGGER trg_artists_updated_at
 BEFORE UPDATE ON artists
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -145,6 +147,7 @@ CREATE TABLE IF NOT EXISTS artworks (
     CONSTRAINT chk_artwork_locale CHECK (locale IN ('id', 'en'))
 );
 
+DROP TRIGGER IF EXISTS trg_artworks_updated_at ON artworks;
 CREATE TRIGGER trg_artworks_updated_at
 BEFORE UPDATE ON artworks
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -172,6 +175,7 @@ CREATE TABLE IF NOT EXISTS exhibitions (
     CONSTRAINT chk_exhibition_locale CHECK (locale IN ('id', 'en'))
 );
 
+DROP TRIGGER IF EXISTS trg_exhibitions_updated_at ON exhibitions;
 CREATE TRIGGER trg_exhibitions_updated_at
 BEFORE UPDATE ON exhibitions
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -207,6 +211,7 @@ CREATE TABLE IF NOT EXISTS articles (
     CONSTRAINT chk_article_status CHECK (status IN ('draft', 'published', 'archived'))
 );
 
+DROP TRIGGER IF EXISTS trg_articles_updated_at ON articles;
 CREATE TRIGGER trg_articles_updated_at
 BEFORE UPDATE ON articles
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -229,6 +234,7 @@ CREATE TABLE IF NOT EXISTS books (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+DROP TRIGGER IF EXISTS trg_books_updated_at ON books;
 CREATE TRIGGER trg_books_updated_at
 BEFORE UPDATE ON books
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -253,6 +259,7 @@ CREATE TABLE IF NOT EXISTS documents (
     CONSTRAINT chk_doc_downloads CHECK (download_count >= 0)
 );
 
+DROP TRIGGER IF EXISTS trg_documents_updated_at ON documents;
 CREATE TRIGGER trg_documents_updated_at
 BEFORE UPDATE ON documents
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -301,6 +308,7 @@ CREATE TABLE IF NOT EXISTS pages (
     CONSTRAINT chk_page_locale CHECK (locale IN ('id', 'en'))
 );
 
+DROP TRIGGER IF EXISTS trg_pages_updated_at ON pages;
 CREATE TRIGGER trg_pages_updated_at
 BEFORE UPDATE ON pages
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -324,6 +332,7 @@ CREATE TABLE IF NOT EXISTS banners (
     CONSTRAINT chk_banner_sort CHECK (sort_order >= 0)
 );
 
+DROP TRIGGER IF EXISTS trg_banners_updated_at ON banners;
 CREATE TRIGGER trg_banners_updated_at
 BEFORE UPDATE ON banners
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -353,6 +362,7 @@ CREATE TABLE IF NOT EXISTS reservations (
     CONSTRAINT chk_res_status CHECK (status IN ('pending', 'confirmed', 'cancelled', 'completed'))
 );
 
+DROP TRIGGER IF EXISTS trg_reservations_updated_at ON reservations;
 CREATE TRIGGER trg_reservations_updated_at
 BEFORE UPDATE ON reservations
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -375,6 +385,7 @@ CREATE TABLE IF NOT EXISTS contact_inquiries (
     CONSTRAINT chk_inquiry_status CHECK (status IN ('unread', 'read', 'replied', 'archived'))
 );
 
+DROP TRIGGER IF EXISTS trg_contact_inquiries_updated_at ON contact_inquiries;
 CREATE TRIGGER trg_contact_inquiries_updated_at
 BEFORE UPDATE ON contact_inquiries
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
@@ -392,6 +403,7 @@ CREATE TABLE IF NOT EXISTS system_settings (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+DROP TRIGGER IF EXISTS trg_system_settings_updated_at ON system_settings;
 CREATE TRIGGER trg_system_settings_updated_at
 BEFORE UPDATE ON system_settings
 FOR EACH ROW EXECUTE FUNCTION update_timestamp_column();
