@@ -600,7 +600,7 @@ INSERT INTO users (
     '11111111-1111-1111-1111-111111111111',
     'Super Admin OHD',
     'admin@ohdmuseum.com',
-    '$2a$12$e0X9qfWkX4zKz8w7B.i4cebUfg27V2yGzU4b6QvWJ6eU5rM6iJd9i',
+    '$2b$10$4iRsM17U3We/Rgc5Vhrw9uPgGWr6qFmdAcS8EZCa4s5Y/IM084l8y',
     '+6281234567890',
     TRUE
 ) ON CONFLICT (email) DO NOTHING;
