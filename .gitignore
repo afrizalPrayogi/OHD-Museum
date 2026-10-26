@@ -1,0 +1,17 @@
+# System / IDE
+.9router/
+.DS_Store
+Thumbs.db
+*.log
+
+# Node dependencies & build
+node_modules/
+dist/
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
